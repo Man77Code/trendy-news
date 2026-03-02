@@ -9,7 +9,7 @@ const Newsapp = () => {
   const [error, setError] = useState(null);
 
   const itemsPerPage = 10;
-  const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+ 
   const cache = useRef({});
 
   const totalPages = Math.ceil(allArticles.length / itemsPerPage);
@@ -20,10 +20,7 @@ const Newsapp = () => {
   );
 
   const getData = async (searchTerm) => {
-    if (!API_KEY) {
-      setError("API key missing");
-      return;
-    }
+    
 
     const term = searchTerm || search;
     if (!term.trim()) return;
@@ -38,9 +35,7 @@ const Newsapp = () => {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${term}&pageSize=100&apiKey=${API_KEY}`
-      );
+       const response = await fetch(`/api/news?q=${term}`);
 
       const jsonData = await response.json();
 
