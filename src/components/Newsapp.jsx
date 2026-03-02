@@ -35,7 +35,15 @@ const Newsapp = () => {
       setLoading(true);
       setError(null);
 
-       const response = await fetch(`/api/news?q=${term}`);
+      const baseURL = import.meta.env.DEV
+  ? "https://trendy-news-vifl.vercel.app"
+  : "";
+
+
+        const response = await fetch(
+      `${baseURL}/api/news?q=${term}`
+    );
+
 
       const jsonData = await response.json();
 
