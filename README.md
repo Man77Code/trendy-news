@@ -31,5 +31,3 @@ Get your free key at newsapi.org
 ⚠️ Note
 NewsAPI free plan blocks page 2+ requests. This app fetches all 100 results in one call and paginates on the client side to work around this.
 
-📄 License
-MIT
